@@ -1,0 +1,8 @@
+urls-source "ttrss"
+ttrss-url "https://rss.domain.tld"
+ttrss-login "user"
+ttrss-password "supersecretpassword"
+
+# -- shortcuts -----
+ttrss-flag-star "s"
+ttrss-flag-publish "p"

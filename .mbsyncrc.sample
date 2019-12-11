@@ -1,0 +1,132 @@
+#################################
+######## Account privat  ########
+#################################
+
+IMAPAccount privat
+Host imap.mailbox.org
+User privat@nchristian.net
+PassCmd "echo ${PASSWORD:-$(gpg2 --no-tty -qd ~/.mutt/password-privat.gpg)}"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile ~/.mutt/certificates.crt
+
+# Remote storage
+IMAPStore privat-remote
+Account privat
+
+# Local storage
+MaildirStore privat-local
+Path ~/Mail/privat/
+Inbox ~/Mail/privat/INBOX
+
+Channel privat-inbox
+Master :privat-remote:"INBOX"
+Slave :privat-local:INBOX
+Create Both
+Expunge Both
+
+Channel privat-archive
+Master :privat-remote:"Archive"
+Slave :privat-local:"Archive"
+Create Both
+Expunge Both
+
+Channel privat-drafts
+Master :privat-remote:"Drafts"
+Slave :privat-local:"Drafts"
+Create Both
+Expunge Both
+
+Channel privat-sent
+Master :privat-remote:"Sent"
+Slave :privat-local:"Sent"
+Create Both
+Expunge Both
+
+Channel privat-trash
+Master :privat-remote:"Trash"
+Slave :privat-local:"Trash"
+Create Both
+Expunge Both
+
+Channel privat-junk
+Master :privat-remote:"Spam"
+Slave :privat-local:"Spam"
+Create Both
+Expunge Both
+
+Group privat
+Channel privat-inbox
+Channel privat-archive
+Channel privat-drafts
+Channel privat-sent
+Channel privat-trash
+Channel privat-junk
+
+
+
+#################################
+######## Account tinfoil ########
+#################################
+
+IMAPAccount tinfoil
+Host imap.mailbox.org
+User mail@tinfoil-hat.net
+PassCmd "echo ${PASSWORD:-$(gpg2 --no-tty -qd ~/.mutt/password-tinfoil.gpg)}"
+SSLType IMAPS
+SSLVersions TLSv1.2
+CertificateFile ~/.mutt/certificates.crt
+
+# Remote storage
+IMAPStore tinfoil-remote
+Account tinfoil
+
+# Local storage
+MaildirStore tinfoil-local
+Path ~/Mail/tinfoil/
+Inbox ~/Mail/tinfoil/INBOX
+
+Channel tinfoil-inbox
+Master :tinfoil-remote:"INBOX"
+Slave :tinfoil-local:INBOX
+Create Both
+Expunge Both
+
+Channel tinfoil-archive
+Master :tinfoil-remote:"Archive"
+Slave :tinfoil-local:"Archive"
+Create Both
+Expunge Both
+
+Channel tinfoil-drafts
+Master :tinfoil-remote:"Drafts"
+Slave :tinfoil-local:"Drafts"
+Create Both
+Expunge Both
+
+Channel tinfoil-sent
+Master :tinfoil-remote:"Sent"
+Slave :tinfoil-local:"Sent"
+Create Both
+Expunge Both
+
+Channel tinfoil-trash
+Master :tinfoil-remote:"Trash"
+Slave :tinfoil-local:"Trash"
+Create Both
+Expunge Both
+
+Channel tinfoil-junk
+Master :tinfoil-remote:"Junk"
+Slave :tinfoil-local:"Junk"
+Create Both
+Expunge Both
+
+Group tinfoil
+Channel tinfoil-inbox
+Channel tinfoil-archive
+Channel tinfoil-drafts
+Channel tinfoil-sent
+Channel tinfoil-trash
+Channel tinfoil-junk
+

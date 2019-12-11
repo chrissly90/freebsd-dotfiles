@@ -1,0 +1,25 @@
+# Set default values for all following accounts.
+defaults
+auth           on
+tls            on
+tls_trust_file /usr/local/share/certs/ca-root-nss.crt
+logfile        ~/.msmtp.log
+
+
+account privat
+host smtp.mailbox.org
+port 465
+protocol smtp
+user mail@domain.tld
+from mail@domain.tld
+tls_starttls off
+password supersecretpassword
+
+account tinfoil
+host smtp.mailbox.org
+port 465
+protocol smtp
+user mail@domain.tld
+from mail@domain.tld
+tls_starttls off
+password supersecretpassword

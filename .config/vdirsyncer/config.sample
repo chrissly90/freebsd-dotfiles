@@ -1,0 +1,70 @@
+[general]
+# A folder where vdirsyncer can store some metadata about each pair.
+status_path = "~/.vdirsyncer/status/"
+
+# CARDDAV
+[pair Privat_Contacts]
+# A `[pair <name>]` block defines two storages `a` and `b` that should be
+# synchronized. The definition of these storages follows in `[storage <name>]`
+# blocks. This is similar to accounts in OfflineIMAP.
+a = "Privat_Contacts_Local"
+b = "Privat_Contacts_Remote"
+
+# Synchronize all collections available on "side B" (in this case the server).
+# You need to run `vdirsyncer discover` if new calendars/addressbooks are added
+# on the server.
+
+# Omitting this parameter implies that the given path and URL in the
+# corresponding `[storage <name>]` blocks are already directly pointing to a
+# collection each.
+collections = ["from b"]
+
+# Synchronize the "display name" property into a local file (~/.contacts/displayname).
+
+# To resolve a conflict the following values are possible:
+#   `null` - abort when collisions occur (default)
+#   `"a wins"` - assume a's items to be more up-to-date#   `"b wins"` - assume b's items to be more up-to-date
+conflict_resolution = "b wins"
+
+[storage Privat_Contacts_Local]
+# A storage references actual data on a remote server or on the local disk.
+# Similar to repositories in OfflineIMAP.
+type = "filesystem"
+path = "~/.contacts/Privat_Contacts/local/32/"
+fileext = ".vcf"
+
+[storage Privat_Contacts_Remote]
+type = "carddav"
+url = "subdomain.domain.tld"
+username = "user"
+# The password can also be fetched from the system password storage, netrc or a
+# custom command. See http://vdirsyncer.readthedocs.org/en/stable/keyring.html
+password = "supersecretpassword"
+
+# CALDAV
+[pair Privat_Calendar]
+a = "Privat_Calendar_Local"
+b = "Privat_Calendar_Remote"
+#collections = ["private", "work"]
+collections = ["from b"]
+
+# Calendars also have a color property
+
+# To resolve a conflict the following values are possible:
+#   `null` - abort when collisions occur (default)
+#   `"a wins"` - assume a's items to be more up-to-date
+#   `"b wins"` - assume b's items to be more up-to-date
+conflict_resolution = "a wins"
+
+[storage Privat_Calendar_Local]
+type = "filesystem"
+path = "~/.calendars/Privat_Calendar/local/Y2FsOi8vMC82OA/"
+fileext = ".ics"
+
+[storage Privat_Calendar_Remote]
+type = "caldav"
+## fix for radicale
+item_types = ["VTODO", "VEVENT"]
+url = "subdomain.domain.tld"
+username = "user"
+password = "supersecretpassword"
