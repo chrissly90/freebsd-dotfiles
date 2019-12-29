@@ -127,6 +127,18 @@ alias install="doas pkg install"
 alias update-mpd="mpc -h /usr/home/anon/.config/mpd/socket update"
 alias convert-html="pandoc --to=html --from=markdown --css ~/Dokumente/blog/css/tinfoil.css -o ~/Dokumente/blog/posts/new.html &&"
 alias calendar="khal interactive"
+alias brightness_100="doas sysctl hw.acpi.video.lcd0.brightness=100"
+alias brightness_90="doas sysctl hw.acpi.video.lcd0.brightness=90"
+alias brightness_80="doas sysctl hw.acpi.video.lcd0.brightness=80"
+alias brightness_70="doas sysctl hw.acpi.video.lcd0.brightness=70"
+alias brightness_60="doas sysctl hw.acpi.video.lcd0.brightness=60"
+alias brightness_50="doas sysctl hw.acpi.video.lcd0.brightness=50"
+alias brightness_40="doas sysctl hw.acpi.video.lcd0.brightness=40"
+alias brightness_30="doas sysctl hw.acpi.video.lcd0.brightness=30"
+alias brightness_20="doas sysctl hw.acpi.video.lcd0.brightness=20"
+alias brightness_10="doas sysctl hw.acpi.video.lcd0.brightness=10"
+
+
 
 # custom functions
 function dotfiles_autoupdate {
