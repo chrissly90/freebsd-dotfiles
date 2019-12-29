@@ -144,7 +144,7 @@ alias brightness_10="doas sysctl hw.acpi.video.lcd0.brightness=10"
 function dotfiles_autoupdate {
     config add -u && \
     config commit -m "Update $(date +"%Y-%m-%d %H:%M") $(uname -s)/$(uname -m)" && \
-    config push
+    config push origin master
 }
 # convert to html
 function convert-to-html {
